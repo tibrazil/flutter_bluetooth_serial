@@ -1,17 +1,22 @@
 name: agros_flutter_bluetooth_serial
 version: 1.0.0
-description: Flutter basic implementation for Classical Bluetooth (only RFCOMM for now).
+description: Flutter implementation for Classical Bluetooth (RFCOMM) with Kotlin.
 homepage: https://github.com/tibrazil/flutter_bluetooth_serial
 repository: https://github.com/tibrazil/flutter_bluetooth_serial
 issue_tracker: https://github.com/tibrazil/flutter_bluetooth_serial/issues
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
-  flutter: ">=1.17.0"
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.10.0"
 
 dependencies:
-  flutter:  
+  flutter:
     sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
 
 flutter:
   plugin:
