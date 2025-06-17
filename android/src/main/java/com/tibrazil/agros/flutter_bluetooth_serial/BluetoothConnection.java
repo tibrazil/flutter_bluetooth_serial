@@ -1,4 +1,4 @@
-package io.github.edufolly.flutterbluetoothserial;
+package com.tibrazil.agros.flutter_bluetooth_serial;
 
 import java.io.IOException;
 import java.io.InputStream;
