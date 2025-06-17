@@ -1,4 +1,3 @@
-
 # Miscellaneous
 *.class
 *.log
@@ -26,7 +25,8 @@
 .packages
 .pub-cache/
 .pub/
-/build/
+build/
+**/build/
 
 # Android related
 **/android/**/gradle-wrapper.jar
@@ -36,6 +36,23 @@
 **/android/gradlew.bat
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
+**/android/**/GeneratedPluginRegistrant.kt
+
+# Example app specific
+example/build/
+example/android/app/build/
+example/android/.gradle/
+example/android/gradle/
+example/ios/build/
+example/ios/Runner.xcworkspace/
+example/ios/Runner.xcodeproj/project.xcworkspace/
+example/ios/Runner.xcodeproj/xcuserdata/
+example/ios/Pods/
+example/linux/build/
+example/macos/build/
+example/web/build/
+example/windows/build/
+example/test/
 
 # Eclipse related
 example/android/\.project
@@ -73,7 +90,7 @@ android/\.classpath
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
 
-# Exceptions to above rules.
+# Exceptions to above rules
 !**/ios/**/default.mode1v3
 !**/ios/**/default.mode2v3
 !**/ios/**/default.pbxuser
@@ -83,7 +100,15 @@ android/\.classpath
 # Library
 pubspec.lock
 
-# Scripts
-# None at the moment
+# Flutter plugins
 **/.flutter-plugins-dependencies
 **/flutter_export_environment.sh
+
+# Large files
+**/*.so
+**/*.a
+**/*.dylib
+**/libflutter.so
+**/libVkLayer_*.so
+**/*-mergeJavaRes/
+**/merged_native_libs/
