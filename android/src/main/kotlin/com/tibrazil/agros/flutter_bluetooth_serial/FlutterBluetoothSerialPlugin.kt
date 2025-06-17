@@ -27,6 +27,7 @@ class FlutterBluetoothSerialPlugin : FlutterPlugin, ActivityAware {
     private lateinit var methodChannel: MethodChannel
     private lateinit var stateChannel: EventChannel
     private lateinit var discoveryChannel: EventChannel
+    private lateinit var binaryMessenger: BinaryMessenger
     
     private var activity: Activity? = null
     private var context: Context? = null
@@ -83,12 +84,12 @@ class FlutterBluetoothSerialPlugin : FlutterPlugin, ActivityAware {
     }
     
     override fun onAttachedToEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-        val messenger = binding.binaryMessenger
+        binaryMessenger = binding.binaryMessenger
         
-        methodChannel = MethodChannel(messenger, "$NAMESPACE/methods")
+        methodChannel = MethodChannel(binaryMessenger, "$NAMESPACE/methods")
         methodChannel.setMethodCallHandler(::onMethodCall)
         
-        stateChannel = EventChannel(messenger, "$NAMESPACE/state")
+        stateChannel = EventChannel(binaryMessenger, "$NAMESPACE/state")
         stateChannel.setStreamHandler(object : EventChannel.StreamHandler {
             override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
                 stateSink = events
@@ -101,7 +102,7 @@ class FlutterBluetoothSerialPlugin : FlutterPlugin, ActivityAware {
             }
         })
         
-        discoveryChannel = EventChannel(messenger, "$NAMESPACE/discovery")
+        discoveryChannel = EventChannel(binaryMessenger, "$NAMESPACE/discovery")
         discoveryChannel.setStreamHandler(object : EventChannel.StreamHandler {
             override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
                 discoverySink = events
@@ -377,7 +378,7 @@ class FlutterBluetoothSerialPlugin : FlutterPlugin, ActivityAware {
         adapter: BluetoothAdapter
     ) : BluetoothConnection(adapter) {
         
-        private val readChannel = EventChannel(methodChannel.binaryMessenger, "$NAMESPACE/read/$id")
+        private val readChannel = EventChannel(binaryMessenger, "$NAMESPACE/read/$id")
         private var readSink: EventChannel.EventSink? = null
         
         init {
