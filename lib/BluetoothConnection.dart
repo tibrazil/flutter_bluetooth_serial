@@ -1,4 +1,3 @@
-// lib/BluetoothConnection.dart
 part of flutter_bluetooth_serial;
 
 class BluetoothConnection {
